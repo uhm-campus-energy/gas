@@ -1,0 +1,7 @@
+# Ignore bill archives and generated outputs
+
+# Do not commit bill archives
+bill_archive/
+
+# Do not commit generated outputs
+output/
