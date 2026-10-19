@@ -23,7 +23,15 @@ def main():
     print("=" * 70)
     # print(f"Working folder:\n  {folder}\n")
 
-    max_date = load_max_date(config.MAX_DATE_CSV)
+    # Use the older of the two max dates so a bill isn't moved until it has
+    # been loaded in both the account and meter tables. If either is missing,
+    # nothing gets filtered.
+    max_dates = [
+        load_max_date(config.MAX_DATE_ACC_CSV),
+        load_max_date(config.MAX_DATE_METER_CSV),
+    ]
+    max_date = None if None in max_dates else min(max_dates)
+    print(f"Max billed-through date across both tables: {max_date}\n")
     filter_already_billed_by_date(
         folder_path=folder,
         duplicate_dir=config.DUPLICATE_DIR,

@@ -18,8 +18,9 @@ from pathlib import Path
 SCRIPTS = [
     "0) pre-process, find the last dates in database.py",
     "1) organize_gas_bills.py",
-    "2) gas_bill_extract.py",
-    "3) upload_and_archive_data.py",
+    "2) extract_both.py",
+    "3) upload_both.py",
+    "4) archive_bills.py",
 ]
 
 
